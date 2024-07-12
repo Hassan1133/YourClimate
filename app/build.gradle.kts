@@ -49,4 +49,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.lottie)
+    //Retrofit https://square.github.io/retrofit/ - latest vesion https://github.com/square/retrofit.
+    implementation(libs.retrofit)
+    //Gson -> json data to java or kotlin format
+    implementation(libs.converter.gson)
 }
