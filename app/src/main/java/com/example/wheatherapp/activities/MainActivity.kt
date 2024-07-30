@@ -5,14 +5,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.wheatherapp.R
+import com.example.wheatherapp.client.RetrofitClient
 import com.example.wheatherapp.data_classes.WeatherApp
 import com.example.wheatherapp.databinding.ActivityMainBinding
-import com.example.wheatherapp.interfaces.ApiInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -22,7 +20,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val apiKey: String = "b356d4d9a2cf2b881c78f34fb2fba641"
-    private val baseUrl: String = "https://api.openweathermap.org/data/2.5/"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -53,11 +50,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fetchWeatherData(cityName: String) {
-        val retrofit = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(baseUrl)
-            .build().create(ApiInterface::class.java)
-        val response = retrofit.getWeatherData(cityName, apiKey, "metric")
+
+        val response = RetrofitClient.getClientInstance().getApi().getWeatherData(cityName, apiKey, "metric")
 
         response.enqueue(object: Callback<WeatherApp>{
             @SuppressLint("SetTextI18n")
@@ -80,6 +74,9 @@ class MainActivity : AppCompatActivity() {
                     binding.date.text = date()
                     binding.city.text = cityName
                     changeImagesBasedOnWeather(condition)
+                }
+                else {
+                    Toast.makeText(this@MainActivity, "Error: ${response.code()} - ${response.message()}", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -105,6 +102,14 @@ class MainActivity : AppCompatActivity() {
             }
             "Clouds" -> {
                 binding.root.setBackgroundResource(R.drawable.clouds_bg)
+                binding.lottieAnimationView.setAnimation(R.raw.hazy_animation)
+            }
+            "Rain" -> {
+                binding.root.setBackgroundResource(R.drawable.rain_bg)
+                binding.lottieAnimationView.setAnimation(R.raw.rain)
+            }
+            "Smoke" -> {
+                binding.root.setBackgroundResource(R.drawable.smoky_bg)
                 binding.lottieAnimationView.setAnimation(R.raw.hazy_animation)
             }
         }

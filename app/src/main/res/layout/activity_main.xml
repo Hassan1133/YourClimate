@@ -32,7 +32,6 @@
         android:drawableLeft="@drawable/location"
         android:drawablePadding="10dp"
         android:drawableTint="@color/white"
-        android:text="Lahore"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -70,7 +69,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="27°C"
         android:textColor="@color/white"
         android:textSize="80sp"
         android:textStyle="bold"
@@ -96,7 +94,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="kjkjxkjxkjxkxj"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -109,7 +106,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="kjkjxkjxkjxkxj"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -123,7 +119,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Friday"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -136,7 +131,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="12 July 2024"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -275,7 +269,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:text="00:00"
                     android:textColor="#000000" />
 
                 <TextView
@@ -309,7 +302,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:text="00:00"
                     android:textColor="#000000" />
 
                 <TextView
